@@ -10,7 +10,7 @@ export default function Dashboard() {
 
   return (
     <div className="flex h-screen bg-slate-900 text-slate-100 font-sans">
-      
+
       {/* SIDEBAR */}
       <aside className="w-20 bg-slate-950 border-r border-slate-800 flex flex-col items-center py-6 gap-8">
         {/* Logo */}
