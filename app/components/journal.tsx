@@ -100,9 +100,11 @@ export default function Journal({ accountId }) {
               <thead className="bg-zinc-800">
                 <tr className="text-left text-xs font-semibold uppercase tracking-wider text-zinc-400 bg-zinc-900 border-zinc-800">
                   <th className="px-6 py-3">Trade ID</th>
-                  <th className="px-6 py-3">Date</th>
                   <th className="px-6 py-3">Contract</th>
-                  <th className="px-6 py-3">Price</th>
+                  <th className="px-6 py-3">Entry</th>
+                  <th className="px-6 py-3">Exit</th>
+                  <th className="px-6 py-3">Entry Price</th>
+                  <th className="px-6 py-3">Exit Price</th>
                   <th className="px-6 py-3">P&amp;L</th>
                 </tr>
               </thead>
@@ -110,7 +112,7 @@ export default function Journal({ accountId }) {
               <tbody className="divide-y divide-zinc-800">
                 {trades.map((trade) => (
                   <tr
-                    key={trade.id}
+                    key={trade.tradeId}
                     className={`transition hover:bg-zinc-800 ${
                       trade.profitAndLoss >= 0
                         ? "text-emerald-400"
@@ -118,21 +120,28 @@ export default function Journal({ accountId }) {
                     }`}
                   >
                     <td className="px-6 py-4 font-medium text-zinc-100">
-                      {trade.id}
-                    </td>
-
-                    <td className="px-6 py-4 text-zinc-400">
-                      {trade.creationTimestamp}
+                      {trade.tradeId}
                     </td>
 
                     <td className="px-6 py-4 font-mono text-zinc-300">
                       {trade.contractId}
                     </td>
 
-                    <td className="px-6 py-4">
-                      ${trade.price.toFixed(2)}
+                    <td className="px-6 py-4 text-zinc-400">
+                      {trade.entryTimestamp}
                     </td>
 
+                    <td className="px-6 py-4 text-zinc-400">
+                      {trade.exitTimestamp}
+                    </td>
+
+                    <td className="px-6 py-4">
+                      ${trade.entryPrice.toFixed(2)}
+                    </td>
+
+                    <td className="px-6 py-4">
+                      ${trade.exitPrice.toFixed(2)}
+                    </td>
                     <td
                       className={`px-6 py-4 font-semibold ${
                         trade.profitAndLoss >= 0
